@@ -1,0 +1,166 @@
+/* App-specific styles */
+
+/* Dashboard grid layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0.5rem;
+    padding: 0.5rem;
+    min-height: calc(100vh - 4rem);
+}
+
+/* Widget sizes */
+.widget-full {
+    grid-column: span 12;
+}
+.widget-large {
+    grid-column: span 12;
+}
+.widget-medium {
+    grid-column: span 6;
+}
+.widget-small {
+    grid-column: span 3;
+}
+
+@media (min-width: 1024px) {
+    .widget-large {
+        grid-column: span 8;
+    }
+    .widget-medium {
+        grid-column: span 4;
+    }
+    .widget-small {
+        grid-column: span 2;
+    }
+}
+
+@media (min-width: 1280px) {
+    .dashboard-grid {
+        gap: 0.75rem;
+        padding: 0.75rem;
+    }
+}
+
+/* Positive/Negative values */
+.value-positive {
+    color: #22c55e;
+}
+.value-negative {
+    color: #ef4444;
+}
+.value-neutral {
+    color: #71717a;
+}
+
+/* Chart tooltip */
+.custom-tooltip {
+    background: hsl(0 0% 4% / 0.95);
+    border: 1px solid hsl(240 4% 16%);
+    padding: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+}
+.custom-tooltip .label {
+    color: hsl(240 5% 65%);
+    margin-bottom: 0.25rem;
+}
+.custom-tooltip .value {
+    color: hsl(240 5% 90%);
+}
+
+/* Header styles */
+.header-container {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+/* Status indicator dot */
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.status-dot-active {
+    background: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+}
+.status-dot-warning {
+    background: #eab308;
+    box-shadow: 0 0 8px #eab308;
+}
+.status-dot-danger {
+    background: #ef4444;
+    box-shadow: 0 0 8px #ef4444;
+}
+
+/* Card hover effect */
+.card-hover {
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.card-hover:hover {
+    border-color: hsl(142 71% 45% / 0.3);
+}
+
+/* Ticker animation */
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.ticker-tape {
+    animation: ticker 60s linear infinite;
+}
+
+/* Loading skeleton */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        hsl(240 4% 16%) 0%,
+        hsl(240 4% 20%) 50%,
+        hsl(240 4% 16%) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+}
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Button variants */
+.btn-terminal {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 1rem;
+    border-radius: 0.125rem;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+.btn-terminal:hover {
+    transform: translateY(-1px);
+}
+.btn-terminal:active {
+    transform: translateY(0);
+}
+
+/* Tab styles */
+.tab-terminal {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Scrollable area */
+.scroll-area-custom {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(240 4% 16%) transparent;
+}
+
+/* Number formatting */
+.tabular-nums {
+    font-variant-numeric: tabular-nums;
+}

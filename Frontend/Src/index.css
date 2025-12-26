@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 2%;
+        --foreground: 240 5% 90%;
+        --card: 0 0% 4%;
+        --card-foreground: 240 5% 90%;
+        --popover: 0 0% 4%;
+        --popover-foreground: 240 5% 90%;
+        --primary: 142 71% 45%;
+        --primary-foreground: 0 0% 0%;
+        --secondary: 240 4% 16%;
+        --secondary-foreground: 240 5% 90%;
+        --muted: 240 4% 16%;
+        --muted-foreground: 240 5% 65%;
+        --accent: 240 4% 16%;
+        --accent-foreground: 240 5% 90%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 240 4% 16%;
+        --input: 240 4% 16%;
+        --ring: 142 71% 45%;
+        --chart-1: 142 71% 45%;
+        --chart-2: 0 84% 60%;
+        --chart-3: 217 91% 60%;
+        --chart-4: 280 65% 60%;
+        --chart-5: 45 93% 47%;
+        --radius: 0.25rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'IBM Plex Sans', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Chivo', sans-serif;
+        letter-spacing: -0.025em;
+    }
+}
+
+/* Mono font for data */
+.font-mono, .data-value, [data-mono="true"] {
+    font-family: 'JetBrains Mono', monospace;
+    font-feature-settings: "tnum";
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+}
+
+/* Trading colors */
+.text-buy {
+    color: #22c55e;
+}
+.text-sell {
+    color: #ef4444;
+}
+.text-hold {
+    color: #3b82f6;
+}
+.bg-buy {
+    background-color: rgba(34, 197, 94, 0.15);
+}
+.bg-sell {
+    background-color: rgba(239, 68, 68, 0.15);
+}
+
+/* Signal badges */
+.signal-badge {
+    @apply px-2 py-0.5 text-xs font-mono uppercase tracking-wider rounded-sm;
+}
+.signal-badge-buy {
+    @apply signal-badge bg-green-500/20 text-green-400 border border-green-500/30;
+}
+.signal-badge-sell {
+    @apply signal-badge bg-red-500/20 text-red-400 border border-red-500/30;
+}
+.signal-badge-hold {
+    @apply signal-badge bg-blue-500/20 text-blue-400 border border-blue-500/30;
+}
+
+/* Metric card styles */
+.metric-card {
+    @apply bg-card border border-border p-4 rounded-sm;
+}
+.metric-card:hover {
+    @apply border-primary/30;
+    transition: border-color 0.2s ease;
+}
+.metric-value {
+    @apply text-2xl font-mono font-bold tracking-tight;
+}
+.metric-label {
+    @apply text-xs text-muted-foreground uppercase tracking-wider mt-1;
+}
+
+/* Chart container */
+.chart-container {
+    @apply bg-card border border-border rounded-sm p-4;
+}
+
+/* Table styles */
+.trade-table {
+    @apply w-full text-sm;
+}
+.trade-table th {
+    @apply text-left text-xs uppercase tracking-wider text-muted-foreground font-mono py-2 px-3 border-b border-border bg-muted/30;
+}
+.trade-table td {
+    @apply py-2 px-3 border-b border-border font-mono;
+}
+.trade-table tr:hover {
+    @apply bg-muted/20;
+}
+
+/* Mode indicator */
+.mode-badge {
+    @apply px-3 py-1 text-xs font-mono uppercase tracking-widest rounded-sm;
+}
+.mode-backtest {
+    @apply mode-badge bg-blue-500/20 text-blue-400 border border-blue-500/30;
+}
+.mode-paper {
+    @apply mode-badge bg-yellow-500/20 text-yellow-400 border border-yellow-500/30;
+}
+.mode-live {
+    @apply mode-badge bg-red-500/20 text-red-400 border border-red-500/30 animate-pulse;
+}
+
+/* Kill switch */
+.kill-switch-active {
+    @apply bg-red-500/10 border-red-500 text-red-400;
+}
+
+/* Glassmorphism header */
+.glass-header {
+    @apply bg-black/80 backdrop-blur-md border-b border-border/50;
+}
+
+/* Grid background pattern */
+.grid-bg {
+    background-image: radial-gradient(hsl(var(--border)) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Glow effects */
+.glow-green {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
+}
+.glow-red {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+}
+
+/* Animation for loading states */
+@keyframes pulse-subtle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+.animate-pulse-subtle {
+    animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+/* Recharts customization */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+    stroke: hsl(var(--border));
+    stroke-opacity: 0.5;
+}
+.recharts-tooltip-wrapper {
+    outline: none;
+}
+
+/* Debug wrapper reset */
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+}
